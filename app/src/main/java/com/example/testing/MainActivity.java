@@ -1,9 +1,12 @@
 package com.example.testing;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -21,9 +24,25 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        getdata();
+
+
     }
-    public void getdata(){
-        Toast.makeText(this, "hello", Toast.LENGTH_SHORT).show();
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.my_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId= item.getItemId();
+
+        if(itemId ==R.id.action_home){
+            Toast.makeText(this,"You selected the home",Toast.LENGTH_SHORT).show();
+        } else if(itemId==R.id.action_search) {
+            Toast.makeText(this,"You selected the search",Toast.LENGTH_SHORT).show();
+        }
+        return  super.onOptionsItemSelected(item);
     }
 }
